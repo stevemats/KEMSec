@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Security Audit Report</title>
+  </head>
+  <body>
+    <h1>Security Audit Report</h1>
+    <p>The following table summarizes the system security check results:</p>
+    {{ table | safe }}
+
+    <p>Security Status Breakdown:</p>
+    <img src="status_chart.png" alt="Security Status Overview">
+  </body>
+</html>

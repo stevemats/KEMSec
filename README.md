@@ -24,6 +24,12 @@ Infosec audit tool designed to provide comprehensive system vulnerability assess
    pip install -r requirements.txt
    ```
 
+- Additionally you can install [Npcap](https://npcap.com/#download) to resolve any errors during scanning if you're on windows, and on linux distros use:
+
+  ```bash
+  sudo apt-get install libpcap-dev
+  ```
+
 ## Usage
 
 //TBD
