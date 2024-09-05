@@ -4,6 +4,10 @@
 
 Infosec audit tool designed to provide comprehensive system vulnerability assessments, ensuring that e.g., healthcare institutions are protected against emerging security threats. For a start, KEMSec will focus on network security, system policy compliance, and generating detailed audit reports to help organizations improve their defenses.
 
+## Report Overview
+
+![KEMSec report overview](https://github.com/user-attachments/assets/a1cc014f-171b-4759-acda-14aa93f0b4fd)
+
 ## Installation
 
 1. Download the tool:

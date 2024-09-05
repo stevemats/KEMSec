@@ -1,1 +1,4 @@
 .venv/
+*.log
+alpha/
+__pycache__/
