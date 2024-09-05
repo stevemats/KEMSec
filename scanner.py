@@ -5,36 +5,31 @@ from queue import Queue
 
 
 def scan_network(target_ip, scan_type='fast'):
-    """
-    Scans the network for vulnerabilities based on the selected scan type.
-
-    Args:
-        target_ip (str): The target IP range for scanning.
-        scan_type (str): The type of scan to perform (fast, os, service).
-
-    Returns:
-        dict: A dictionary containing scan results.
-    """
     nm = nmap.PortScanner()
-    scan_args = {
-        'fast': '-F',    # Fast scan
-        'os': '-O',      # OS detection
-        'service': '-sV'  # Service version detection
-    }
+    scan_args = {'fast': '-F', 'os': '-O', 'service': '-sV'}
 
     try:
-        print(f"Starting {scan_type} scan on {target_ip}...")
         scan_result = nm.scan(
             target_ip, arguments=scan_args.get(scan_type, '-F'))
-        print("Scan completed.")
-    except nmap.PortScannerError as e:
-        print(f"Error occurred while scanning: {e}")
-        return {}
     except Exception as e:
-        print(f"Unexpected error: {e}")
         return {}
 
-    return scan_result
+    # Parse results into a structured format for reporting
+    results = {'Component': [], 'Status': [], 'Details': []}
+
+    for host in scan_result.get('scan', {}):
+        ipv4 = scan_result['scan'][host]['addresses'].get('ipv4', 'N/A')
+        for proto in scan_result['scan'][host].all_protocols():
+            for port in scan_result['scan'][host][proto].keys():
+                port_info = scan_result['scan'][host][proto][port]
+                state = port_info.get('state', 'unknown')
+                service = port_info.get('name', 'unknown')
+                results['Component'].append(f'{ipv4} - Port {port}')
+                results['Status'].append(state)
+                results['Details'].append(
+                    f'Service: {service}, State: {state}')
+
+    return results
 
 
 def display_scan_results(scan_result):

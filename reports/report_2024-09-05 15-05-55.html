@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KEMSec Security Audit Report</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="./css/main.css"> -->
+     <style>
+        body {
+        font-family: "Roboto", sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        }
+
+        a {
+        color: rgb(188, 188, 171);
+        }
+
+        header {
+        background-color: #1a202c;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+        margin: 0;
+        font-size: 2rem;
+        }
+
+        .container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        }
+
+        .summary {
+        background-color: #e2e8f0;
+        padding: 15px;
+        margin-bottom: 30px;
+        border-radius: 6px;
+        border-left: 6px solid #3182ce;
+        }
+
+        h2 {
+        font-size: 1.75rem;
+        color: #2d3748;
+        margin-bottom: 15px;
+        }
+
+        p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        }
+
+        .summary p {
+        font-weight: 500;
+        color: #4a5568;
+        }
+
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        }
+
+        table th,
+        table td {
+        text-align: left;
+        padding: 12px 15px;
+        border: 1px solid #e2e8f0;
+        }
+
+        table th {
+        background-color: #2d3748;
+        color: white;
+        }
+
+        table tbody tr:nth-child(odd) {
+        background-color: #f7fafc;
+        }
+
+        table tbody tr:hover {
+        background-color: #edf2f7;
+        }
+
+        .chart-section {
+        text-align: center;
+        margin-top: 40px;
+        }
+
+        .chart-section img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+        text-align: center;
+        padding: 10px 0;
+        margin-top: 40px;
+        background-color: #2d3748;
+        color: white;
+        font-size: 0.9rem;
+        }
+     </style>
+</head>
+<body>
+
+    <header>
+        <h1>Latest Security Audit Report</h1>
+    </header>
+
+    <div class="container">
+        <!-- Report summary -->
+        <div class="summary">
+            <h2>Audit Overview</h2>
+            <p>Generated on: 2024-09-05 15-05-55</p>
+            <p>Total Components Scanned: 4</p>
+            <p>Inactive Components: 0</p>
+            <p>Components with Open Ports Detected: 0</p>
+        </div>
+
+        <!-- Table summary -->
+        <h2>Detailed Security Check Results</h2>
+        <p>The table below summarizes the results of the security audit conducted on the system components:</p>
+        <table class="dataframe table table-striped">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Component</th>
+      <th>Status</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Network Scan</td>
+      <td>No Open Ports</td>
+      <td>No open ports detected</td>
+    </tr>
+    <tr>
+      <td>Firewall</td>
+      <td>Active</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>Antivirus</td>
+      <td>Active</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>Disk Encryption</td>
+      <td>Enabled</td>
+      <td>N/A</td>
+    </tr>
+  </tbody>
+</table>
+
+        <!-- Security status chart -->
+        <div class="chart-section">
+            <h2>Security Status Breakdown</h2>
+            <p>The following chart visually represents the overall system security status:</p>
+            <img src="../reports/images/status_chart.png" alt="Security Status Overview">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 <a href="https://github.com/stevemats/KEMSec">KEMsec</a>. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
