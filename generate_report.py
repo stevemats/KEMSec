@@ -4,8 +4,9 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 import os
 import logging
-from scanner import scan_network, validate_ip_range
-from policy_checker import PolicyChecker
+from weasyprint import HTML
+from modules.scanner import scan_network, validate_ip_range
+from modules.policy_checker import PolicyChecker
 
 # Setup logging
 logging.basicConfig(
@@ -29,14 +30,14 @@ os.makedirs(IMG_DIR, exist_ok=True)
 
 
 def setup_template_engine():
-    """Sets up the Jinja2 template environment for efficient rendering."""
+    """Sets up the Jinja2 template env for efficient rendering."""
     env = Environment(loader=FileSystemLoader(HTML_TEMPLATE_DIR))
     return env
 
 
 def generate_html_report(dataframe, chart_path):
     """
-    Generates a professional HTML report using advanced Jinja2 rendering.
+    Generates a HTML report using Jinja2 rendering.
     """
     try:
         logging.info("Starting HTML report generation.")
@@ -61,16 +62,31 @@ def generate_html_report(dataframe, chart_path):
             company_name="KEMSA Security Audit"
         )
 
-        # Save the report
+        # Save the HTML report
         report_file = os.path.join(REPORT_DIR, f'report_{current_time}.html')
         with open(report_file, 'w') as f:
             f.write(report)
 
-        logging.info(f"Report generated successfully: {report_file}")
+        logging.info(f"HTML report generated successfully: {report_file}")
         return report_file
 
     except Exception as e:
         logging.error(f"Error generating HTML report: {e}")
+        raise
+
+
+def generate_pdf_report(html_report_path, pdf_output_path):
+    """
+    Converts an HTML report into a PDF using WeasyPrint.
+    """
+    try:
+        logging.info(f"Converting HTML report {html_report_path} to PDF.")
+        # Using WeasyPrint to convert HTML report to PDF
+        HTML(html_report_path).write_pdf(pdf_output_path)
+        logging.info(f"PDF report generated successfully: {pdf_output_path}")
+        return pdf_output_path
+    except Exception as e:
+        logging.error(f"Error generating PDF report: {e}")
         raise
 
 
@@ -202,7 +218,13 @@ if __name__ == "__main__":
         print(summary)
 
         # Generate the HTML report
-        generate_html_report(df, chart_path)
+        html_report_path = generate_html_report(df, chart_path)
+
+        # Convert HTML report to PDF
+        current_time = datetime.now().strftime('%Y-%m-%d %H-%M-%S')
+        pdf_report_path = os.path.join(
+            REPORT_DIR, f'report_{current_time}.pdf')
+        generate_pdf_report(html_report_path, pdf_report_path)
 
     except Exception as main_e:
         logging.critical(f"Critical error during main execution: {main_e}")
