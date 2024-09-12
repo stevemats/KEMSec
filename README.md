@@ -36,4 +36,8 @@ Infosec audit tool designed to provide comprehensive system vulnerability assess
 
 ## Usage
 
-//TBD
+- Now to start the audit, all you have to do is run the below command:
+
+  ```bash
+  python generate_report.py
+  ```
