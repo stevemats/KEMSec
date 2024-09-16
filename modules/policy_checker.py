@@ -1,7 +1,8 @@
-import subprocess
 import os
 import psutil
 import logging
+import subprocess
+
 
 # Configure logging
 logging.basicConfig(filename="policy_checker.log", level=logging.INFO,
