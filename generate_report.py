@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 from jinja2 import Environment, FileSystemLoader
 from weasyprint import HTML
-from colorama import Fore, Style, init
+from colorama import Fore, Back, Style, init
 
 from modules.scanner import scan_network, validate_ip_range
 from modules.policy_checker import PolicyChecker
@@ -184,7 +184,7 @@ def run_network_scan(target_ip):
 
 def display_menu():
     """KEMSec Tool options."""
-    print(Fore.CYAN + "\n--- Main Menu ---")
+    print(Fore.GREEN + "\n--- Choose an Option: ---")
     print(Fore.CYAN + "1. Run Network Scan")
     print(Fore.CYAN + "2. Run Policy Checks")
     print(Fore.CYAN + "3. Generate Report (HTML/PDF)")
@@ -198,7 +198,8 @@ def interactive_menu():
         choice = input("\nEnter your choice: ")
 
         if choice == "1":
-            target_ip = input("Enter target IP range (e.g., 192.168.1.0/24): ")
+            target_ip = input(
+                Back.BLUE + "Enter target IP range (e.g., 192.168.1.0/24): ")
             if validate_ip_range(target_ip):
                 open_ports = run_network_scan(target_ip)
                 print(f"Open Ports: {open_ports}")
