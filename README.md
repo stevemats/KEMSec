@@ -41,3 +41,15 @@ Infosec audit tool designed to provide comprehensive system vulnerability assess
   ```bash
   python generate_report.py
   ```
+
+---
+
+## Contribution
+
+- You can contribute to this project in either of the following ways:
+
+  1.  Open an issue addressing a problem, question or a feature - [Issues](https://github.com/stevemats/KEMSec/issues)
+
+  2.  Open a Pull request to add a feature or project improvement referencing an issue. - [Pull Request](https://github.com/stevemats/KEMSec/pulls)
+
+---
